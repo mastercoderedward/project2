@@ -54,7 +54,7 @@ public class MovieRentApp {
 
 		}
 
-		// Store in file of trancations and earnings file in earnings method
+		// Store in file of transactions and earnings file in earnings method
 		Earnings();
 	}
 
@@ -99,31 +99,56 @@ public class MovieRentApp {
 		} while (userInput != "d");
 	}
 
-	private static void availableMovie() throws FileNotFoundException{
-		
+	private static void availableMovie() throws FileNotFoundException {
+
 		String fileName = "Movie_Data.csv";
 		File file = new File(fileName);
 		Scanner input = new Scanner(file);
 		String movie = input.nextLine();
 
 		while (input.hasNext()) {
-			
+
 			String data = input.nextLine();
 			String[] name = data.split("\"");
-			if(name.length != 3)
+			if (name.length != 3)
 				name = data.split(",");
-				System.out.println("	" + name[1]);
+			System.out.println("	" + name[1]);
 
 		}
-
 	}
 
 	private static void MovieGenre() {
+		// use index.Of
+		Scanner input = new Scanner(System.in);
+		System.out.println(
+				"Movie genres: \n(1)Horror, (2)Comedy, (3)Action, (4)Drama, (5)Adventure, (6)Crime, (7)Thriller, (8)Romance, (9)Fantasy, (10)Animation, (11)Children");
+		String[] genre = { "Horror", "Comedy", "Action", "Drama", "Adventure", "Crime", "Thriller", "Romance",
+				"Fantasy", "Animation", "Children" };
+		System.out.print("Select a genre:");
+		int userGenre = input.nextInt() - 1;
 
+		String fileName = "Movie_Data.csv";
+		File file = new File(fileName);
+		String movie = input.nextLine();
+
+		while (input.hasNext()) {
+
+			String data = input.nextLine();
+			String[] name = data.split("\"");
+			if (name.length != 3)
+				name = data.split(",");
+			System.out.println("	" + genre[userGenre]);
+		}
+		// not sure how to get it to output correctly
 	}
 
 	private static void MovieTitle() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter a movie title");
+		String movieTitle = input.nextLine();
+		movieTitle.toLowerCase();
+
+		// check in file
 
 	}
-
 }
